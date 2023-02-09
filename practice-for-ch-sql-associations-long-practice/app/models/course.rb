@@ -10,6 +10,7 @@
 #  updated_at    :datetime         not null
 #
 class Course < ApplicationRecord
+    
 
   has_many :enrolled_students,
       primary_key: :id,
@@ -21,9 +22,17 @@ class Course < ApplicationRecord
       foreign_key: :course_id,
       class_name: :Enrollment
       
-  has_many :prereqs,
+   belongs_to :prerequisite,
       primary_key: :id,
       foreign_key: :prereq_id,
-      class_name: :Prerequisite
+      class_name: :Course,
+      optional: true
+
+    belongs_to :instructor,
+    primary_key: :id,
+    foreign_key: :instructor_id,
+    class_name: :User
+
+  
 
 end
