@@ -12,10 +12,10 @@ class User < ApplicationRecord
     has_many :enrolled_courses,
         primary_key: :id,
         foreign_key: :course_id,
-        class_name: :Course
+        class_name: :Enrollment
     
     has_many :enrollments,
-        through: :student,
+        through: :enrolled_courses,
         source: :course
 
 end
